@@ -81,6 +81,8 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
 
+
+        
         <form class="d-flex ms-auto" role="search" id="searchForm">
   <input id="searchInput" class="form-control me-2" type="search" placeholder="Search">
   <button class="btn btn-outline-success" type="submit">Search</button>
@@ -90,59 +92,24 @@
     </div>
   </nav>
 
-  <!-- ✅ MOVIE DETAILS SECTION -->
-  <div class="movie-container">
 
-    <!-- Movie Poster -->
-    <div class="movie-poster">
-      <img src="https://via.placeholder.com/300x450" alt="Movie Poster">
-    </div>
+  
+  <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
 
-    <!-- Movie Info -->
-    <div class="movie-info">
-      <h2>Inception (2010)</h2>
+    <div class="carousel-indicators"></div>
 
-      <p><strong>TMDb Rating:</strong> ⭐ 8.4/10</p>
-      <p><strong>User Rating:</strong> ⭐ 4.2/5</p>
+    <div class="carousel-inner"></div>
 
-      <div class="genres mb-3">
-        <span class="tag">Action</span>
-        <span class="tag">Sci‑Fi</span>
-        <span class="tag">Thriller</span>
-      </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
 
-      <p><strong>Description:</strong></p>
-      <p>
-        A thief who steals corporate secrets through dream-sharing technology
-        is given the inverse task of planting an idea into the mind of a CEO.
-      </p>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
 
-      <p><strong>Cast:</strong> Leonardo D., Joseph G., Elliot P.</p>
+</div>
 
-      <button class="btn btn-primary mt-3">Add to Watchlist</button>
-      <button class="btn btn-warning mt-3">Rate / Review ⭐</button>
-    </div>
-
-  </div>
-
-  <!-- ✅ REVIEWS SECTION -->
-  <div class="container mt-4">
-    <h3>Reviews</h3>
-
-    <div class="review-card">
-      <strong>User123</strong> • ⭐⭐⭐⭐☆
-      <p>Great movie with a brilliant concept!</p>
-    </div>
-
-    <div class="review-card">
-      <strong>MovieFan</strong> • ⭐⭐⭐☆☆
-      <p>Good, but confusing at times.</p>
-    </div>
-
-    <h4 class="mt-4">Add Your Review</h4>
-    <textarea class="form-control mb-2" placeholder="Write your review..."></textarea>
-    <button class="btn btn-success">Submit Review</button>
-  </div>
 
 </body>
 </html>
