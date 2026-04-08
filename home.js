@@ -62,4 +62,66 @@ function displaySearchResults(results) {
         `;
     });
 }
+
+const TMDB_API_KEY = "YOUR_API_KEY_HERE";
+const today = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
+
+async function loadUpcomingMovies() {
+    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Filter movies releasing after today's date 
+        const upcoming = data.results
+            .filter(movie => movie.release_date >= today)
+            .slice(0, 3); // take only 3
+
+        updateCarousel(upcoming);
+
+    } catch (error) {
+        console.error("Error fetching upcoming movies:", error);
+    }
+}
+
+function updateCarousel(movies) {
+    const carouselInner = document.querySelector("#movieCarousel .carousel-inner");
+    const indicators = document.querySelector(".carousel-indicators");
+
+    carouselInner.innerHTML = "";
+    indicators.innerHTML = "";
+
+    movies.forEach((movie, index) => {
+        const activeClass = index === 0 ? "active" : "";
+
+        const poster = movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            : "https://via.placeholder.com/1000x500?text=No+Image";
+
+        // Add indicator button
+        indicators.innerHTML += `
+            <button type="button" 
+                    data-bs-target="#movieCarousel" 
+                    data-bs-slide-to="${index}"
+                    ${activeClass && "class='active'"}></button>
+        `;
+
+        // Add carousel slide
+        carouselInner.innerHTML += `
+            <div class="carousel-item ${activeClass}">
+                <img src="${poster}" class="d-block w-100" alt="${movie.title}">
+                
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>${movie.title}</h5>
+                    <p>Release Date: ${movie.release_date}</p>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ✅ Load movies when homepage loads
+document.addEventListener("DOMContentLoaded", loadUpcomingMovies);
+``
 </script>
